@@ -9,7 +9,9 @@ function FriendList() {
         id: uuid(),
         name: '',
         age: null,
-        email: ''
+        email: '',
+        latestComment: '',
+        currentActivity: '',
     })
     useEffect(() => {
         getData()
@@ -81,10 +83,28 @@ function FriendList() {
                             value={newFriend.email}
                             onChange={handleChange}
                         />
+                        <label id='latestComment'> Latest Comment </label>
+                        <input
+                            id='latestComment'
+                            placeholder='Latest Comment'
+                            type="text"
+                            name="latestComment"
+                            value={newFriend.latestComment}
+                            onChange={handleChange}
+                        />
+                        <label id='currentActivity'> Current activity </label>
+                        <input
+                            id='currentActivity'
+                            placeholder='Current activity'
+                            type="name"
+                            name="currentActivity"
+                            value={newFriend.currentActivity}
+                            onChange={handleChange}
+                        />
                         <button type="submit">Submit</button>
                     </form>
                 </section>
-                <section className='friendList'>
+                <section className='friend-list'>
                     <h2>Friends: </h2>
                     <ol>
                         {
@@ -94,6 +114,8 @@ function FriendList() {
                                         <h3>{aFriend.name}</h3>
                                         <p>Age: {aFriend.age}</p>
                                         <p>email: {aFriend.email}</p>
+                                        {aFriend.latestComment ? <p>Latest Comment: {aFriend.latestComment}</p> : null}
+                                        {aFriend.currentActivity ? <p>Current activity: {aFriend.currentActivity}</p> : null}
                                     </li>
                                 )
                             })
